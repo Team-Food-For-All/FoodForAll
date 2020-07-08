@@ -12,9 +12,24 @@ class UserProfile(models.Model):
     city = models.CharField(max_length=100, default='')
     website = models.URLField(default='')
     phone = models.IntegerField(default=0)
+    image = models.ImageField(upload_to='profile_image', blank=True)
+
+    
+    def __str__(self):
+        return self.user.username
 
     def create_profile(sender, ** kwarg):
         if kwarg['created']:
             user_profile = UserProfile.objects.create(user=kwarg['instance'])
 
             post_save.connect(create_profile, sender=User)
+
+
+#Home page Models
+
+class Carosel(models.Model):
+    Caroselimg = models.ImageField(upload_to='carosel_image', blank=True)
+    des1 = models.CharField(max_length=100, default='')
+    des2 = models.CharField(max_length=100, default='')
+
+

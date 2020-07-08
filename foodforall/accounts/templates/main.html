@@ -1,9 +1,9 @@
 {% load static %}
-{% block nav%}
+{% block nav %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Vegefoods - Free Bootstrap 4 Template by Colorlib</title>
+    <title>Food For All</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     
@@ -44,10 +44,16 @@
 					    <div class="col-md pr-4 d-flex topper align-items-center">
 					    	<div class="icon mr-2 d-flex justify-content-center align-items-center"><span class="icon-paper-plane"></span></div>
 						    <span class="text">youremail@email.com</span>
-					    </div>
+              </div>
+              {% if user.is_authenticated %}
 					    <div class="col-md-5 pr-4 d-flex topper align-items-center text-lg-right">
-						    <span class="text">3-5 Business days delivery &amp; Free Returns</span>
-					    </div>
+						    <span class="text">Name: {{ user.first_name }}</span>
+              </div>
+              {% else %}
+              <div class="col-md-5 pr-4 d-flex topper align-items-center text-lg-right">
+						    <span class="text">Name: Guest</span>
+              </div>
+              {% endif %}
 				    </div>
 			    </div>
 		    </div>
@@ -59,24 +65,41 @@
 			<div class="logo" style="width: 117px;">
 				<img src="/static/images/logo.png" alt="" style="width: 110px;">
 			</div>
-	      <a class="navbar-brand" href="index.html">Food For all</a>
+	      <a class="navbar-brand" href="/home">Food For all</a>
 	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
 	        <span class="oi oi-menu"></span> Menu
 	      </button>
 
 	      <div class="collapse navbar-collapse" id="ftco-nav">
+          {% if user.is_authenticated %}
 	        <ul class="navbar-nav ml-auto">
+	          <li class="nav-item active"><a href="/home" class="nav-link">Home</a></li>
+			  <li class="nav-item active"><a href="#" class="nav-link">Foods</a></li>
+			  <li class="nav-item"><a href="#" class="nav-link">Charity-Event</a></li>
+			  <li class="nav-item active"><a href="/account/profile" class="nav-link">Profile</a></li>
+	      <li class="nav-item"><a href="#" class="nav-link">About Us</a></li>
+			  <li class="nav-item"><a href="#" class="nav-link">Contact</a></li>
+        <li class="nav-item active"><a href="/account/logout/" class="nav-link">logout</a></li>
+	          <li class="nav-item cta cta-colored"><a href="#" class="nav-link"><span class="icon-shopping_cart"></span>[0]</a></li>
+
+          </ul>
+
+          
+          {% else %}
+          <ul class="navbar-nav ml-auto">
 	          <li class="nav-item active"><a href="/account" class="nav-link">Home</a></li>
 			  <li class="nav-item active"><a href="#" class="nav-link">Foods</a></li>
 			  <li class="nav-item"><a href="#" class="nav-link">Charity-Event</a></li>
-			  <li class="nav-item active"><a href="#" class="nav-link">Profile</a></li>
-	          <li class="nav-item"><a href="#" class="nav-link">About Us</a></li>
+
+	      <li class="nav-item"><a href="#" class="nav-link">About Us</a></li>
 			  <li class="nav-item"><a href="#" class="nav-link">Contact</a></li>
 			  <li class="nav-item active"><a href="/account/login/" class="nav-link">Login</a></li>
-			  <li class="nav-item active"><a href="/account/register" class="nav-link">Signup</a></li>
-	          <li class="nav-item cta cta-colored"><a href="#" class="nav-link"><span class="icon-shopping_cart"></span>[0]</a></li>
+        <li class="nav-item active"><a href="/account/register" class="nav-link">Signup</a></li>
+        
+	        
 
-	        </ul>
+          </ul>
+          {% endif %}
 	      </div>
 	    </div>
 	  </nav>
@@ -86,6 +109,7 @@
 	{% block body %}
     <section id="home-section" class="hero">
 		  <div class="home-slider owl-carousel">
+        
 	      <div class="slider-item" style="background-image: url(/static/images/bg_1.jpg);">
 	      	<div class="overlay"></div>
 	        <div class="container">
@@ -342,7 +366,7 @@
               <h2 class="ftco-heading-2">Vegefoods</h2>
               <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia.</p>
               <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
-                <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
+                <li class="ftco-animate"><a href="twitter.com" target="_blank"><span class="icon-twitter"></span></a></li>
                 <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
                 <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
               </ul>
@@ -392,8 +416,8 @@
         <div class="row">
           <div class="col-md-12 text-center">
 
-            <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-						  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart color-danger" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+            <p>
+						  Designed by FoodForAll Team   <a href="/account" target="_blank"><i class="icon-heart color-danger" aria-hidden="true"></i> </a>
 						  <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
 						</p>
           </div>

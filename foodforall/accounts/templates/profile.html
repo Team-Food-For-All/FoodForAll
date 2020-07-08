@@ -1,0 +1,22 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block body %}
+<div class="container">
+
+   <p>UserName: {{ user }}</p>  <br>
+    <p>Name: {{ user.first_name }} </p><br>
+    <p>Last Name :{{ user.last_name }}</p><br>
+    <p>Email:{{ user.email }}</p> <br>
+    <p>Description : {{user.userprofile.description}}</p> <br>
+    <p>Phone : {{user.userprofile.phone}}</p> <br>
+    <p>Location : {{user.userprofile.city}}</p><br>
+    {% if user.userprofile.image %}
+    <p><img src="{{ user.userprofile.image.url }}" width="240"></p>
+    {% endif %}
+    <a href="{% url 'edit_profile' %}">Edit</a>
+    
+   
+
+</div>
+
+{% endblock %}
