@@ -1,0 +1,24 @@
+{% extends 'main.html' %}
+
+{% block body %}
+
+<div class="container">
+    <h1>Post Food</h1>
+    <form method ="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">submit</button>
+    </form>
+    <h2>{{ text }}</h2>
+
+    {% for post in posts %}
+        <h1>{{ post.postfood }}</h1>
+        {% if post.foodimg %}
+        <img src="{{ post.foodimg.url }}" width="240px">
+        {% endif %}
+        <p>{{ post.date }}</p>
+
+    {% endfor %}
+</div>
+
+{% endblock %}

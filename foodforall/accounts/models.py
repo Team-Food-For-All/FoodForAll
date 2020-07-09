@@ -24,12 +24,11 @@ class UserProfile(models.Model):
 
             post_save.connect(create_profile, sender=User)
 
+            
 
-#Home page Models
 
-class Carosel(models.Model):
-    Caroselimg = models.ImageField(upload_to='carosel_image', blank=True)
-    des1 = models.CharField(max_length=100, default='')
-    des2 = models.CharField(max_length=100, default='')
+
+
+
 
 

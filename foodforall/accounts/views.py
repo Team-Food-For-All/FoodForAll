@@ -20,7 +20,13 @@ def register(request):
         form = RegistrationForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('/account')
+            return redirect('/')
+        else:
+            form = RegistrationForm()
+
+        args = {'form': form}
+        return render(request,'reg_form.html', args)
+       
     else:
         form = RegistrationForm()
 

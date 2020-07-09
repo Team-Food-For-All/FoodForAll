@@ -7,8 +7,11 @@
     <h1>login</h1>
     <form method="POST">
         {% csrf_token %}
-        {{ form.as_p }}
+        <!-- {{ form.as_p }} -->
         <button type="submit">Login</button>
+
+        <p><label for="id_username">Username:</label> <input type="text" name="username"  autocomplete="username"  id="id_username"></p>
+        <p><label for="id_password">Password:</label> <input type="password" name="password"  id="id_password"></p>
     </form>
 
 </div>

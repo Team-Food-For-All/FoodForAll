@@ -18,11 +18,15 @@ from django.urls import path, include
 from foodforall import views
 from django.conf import settings
 from django.conf.urls.static import static
+from home.views import postfood
+
 
 urlpatterns = [
     path('', views.login_redirect, name='login_redirect'),
     path('admin/', admin.site.urls),
     path('account/',include('accounts.urls')),
     path('home/',include('home.urls')),
+    path('postfood/',postfood.as_view(), name='post'),
+    
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
