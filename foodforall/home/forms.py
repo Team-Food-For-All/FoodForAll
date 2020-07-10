@@ -1,5 +1,5 @@
 from django import forms
-from home.models import Post
+from home.models import Post, Subcriber
 
 class HomeForm(forms.ModelForm):
     # post = forms.CharField(widget=forms.TextInput(
@@ -15,3 +15,10 @@ class HomeForm(forms.ModelForm):
             'user'
 
         }
+
+class SubcriberForm(forms.ModelForm):
+    class Meta:
+        model = Subcriber
+        fields ={
+        'subcriber'
+         }

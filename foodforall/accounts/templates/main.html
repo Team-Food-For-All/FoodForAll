@@ -110,14 +110,14 @@
     <section id="home-section" class="hero">
 		  <div class="home-slider owl-carousel">
         {% for carosel in carosels %}
-	      <div class="slider-item" style="background-image: url(/static/images/bg_1.jpg);">
+	      <div class="slider-item" style="background-image: url('{{ carosel.caroselimg.url }}');">
 	      	<div class="overlay"></div>
 	        <div class="container">
 	          <div class="row slider-text justify-content-center align-items-center" data-scrollax-parent="true">
 
 	            <div class="col-md-12 ftco-animate text-center">
 	              <h1 class="mb-2">{{ carosel.des1 }}</h1>
-	              <h2 class="subheading mb-4">We deliver organic vegetables &amp; fruits</h2>
+	              <h2 class="subheading mb-4">{{ carosel.des2 }}</h2>
 	              <p><a href="#" class="btn btn-primary">View Details</a></p>
 	            </div>
 
@@ -127,7 +127,7 @@
       {% endfor %}
 		  
 
-	      <div class="slider-item" style="background-image: url(/static/images/bg_2.jpg);">
+	      <!-- <div class="slider-item" style="background-image: url(/static/images/bg_2.jpg);">
 	      	<div class="overlay"></div>
 	        <div class="container">
 	          <div class="row slider-text justify-content-center align-items-center" data-scrollax-parent="true">
@@ -140,7 +140,7 @@
 
 	          </div>
 	        </div>
-	      </div>
+	      </div> -->
 	    </div>
     </section>
 
@@ -150,18 +150,18 @@
           <div class="col-md-3 text-center d-flex align-self-stretch ftco-animate">
             <div class="media block-6 services mb-md-0 mb-4">
               <div class="icon bg-color-1 active d-flex justify-content-center align-items-center mb-2">
-            		<span class="flaticon-shipped"></span>
+            		<span class="flaticon-diet"></span>
               </div>
               <div class="media-body">
-                <h3 class="heading">Free Shipping</h3>
-                <span>On order over $100</span>
+                <h3 class="heading">Free Foods</h3>
+                <span>Free for all</span>
               </div>
             </div>      
           </div>
           <div class="col-md-3 text-center d-flex align-self-stretch ftco-animate">
             <div class="media block-6 services mb-md-0 mb-4">
               <div class="icon bg-color-2 d-flex justify-content-center align-items-center mb-2">
-            		<span class="flaticon-diet"></span>
+            		<span class="flaticon-salad"></span>
               </div>
               <div class="media-body">
                 <h3 class="heading">Always Fresh</h3>
@@ -205,23 +205,27 @@
             <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia</p>
           </div>
         </div>   		
-    	</div>
+      </div>
+     
     	<div class="container">
     		<div class="row">
-    			<div class="col-md-6 col-lg-3 ftco-animate">
+
+          {% for partner in partners %}
+          <div class="col-md-6 col-lg-3 ftco-animate fadeInUp ftco-animated">
     				<div class="product">
-    					<a href="#" class="img-prod"><img class="img-fluid" src="images/product-1.jpg" alt="Colorlib Template">
-    						<span class="status">30%</span>
+    					<a href="#" class="img-prod">
+                <img src="{{ partner.partnerimg.url }}" alt="" style="width: 100% ;">
+    						<!-- <span class="status">30%</span> -->
     						<div class="overlay"></div>
     					</a>
     					<div class="text py-3 pb-4 px-3 text-center">
-    						<h3><a href="#">Bell Pepper</a></h3>
-    						<div class="d-flex">
+    						<h3><a href="#">{{ partner.partnername }}</a></h3>
+    						<!-- <div class="d-flex">
     							<div class="pricing">
 		    						<p class="price"><span class="mr-2 price-dc">$120.00</span><span class="price-sale">$80.00</span></p>
 		    					</div>
-	    					</div>
-	    					<div class="bottom-area d-flex px-3">
+	    					</div> -->
+	    					<!-- <div class="bottom-area d-flex px-3">
 	    						<div class="m-auto d-flex">
 	    							<a href="#" class="add-to-cart d-flex justify-content-center align-items-center text-center">
 	    								<span><i class="ion-ios-menu"></i></span>
@@ -233,11 +237,17 @@
 	    								<span><i class="ion-ios-heart"></i></span>
 	    							</a>
     							</div>
-    						</div>
+    						</div> -->
     					</div>
     				</div>
-    			</div>
-    		</div>
+          </div>
+
+          {% endfor %}
+
+        </div>
+    		
+        </div>
+        
     </section>
 		
 		
@@ -246,83 +256,30 @@
         <div class="row justify-content-center mb-5 pb-3">
           <div class="col-md-7 heading-section ftco-animate text-center">
           	<span class="subheading">Testimony</span>
-            <h2 class="mb-4">Our satisfied customer says</h2>
+            <h2 class="mb-4">Our Top Donater</h2>
             <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in</p>
           </div>
         </div>
         <div class="row ftco-animate">
           <div class="col-md-12">
             <div class="carousel-testimony owl-carousel">
+              {% for donater in donaters %}
               <div class="item">
                 <div class="testimony-wrap p-4 pb-5">
-                  <div class="user-img mb-5" style="background-image: url(images/person_1.jpg)">
+                  <div class="user-img mb-5" style="background-image: url('{{ donater.donaterimg.url }}')">
                     <span class="quote d-flex align-items-center justify-content-center">
                       <i class="icon-quote-left"></i>
                     </span>
                   </div>
                   <div class="text text-center">
-                    <p class="mb-5 pl-4 line">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                    <p class="name">Garreth Smith</p>
-                    <span class="position">Marketing Manager</span>
+                    <p class="mb-5 pl-4 line">{{ donater.donaterdes }}</p>
+                    <p class="name">{{ donater.donatername }}</p>
+                    <span class="position">{{ donater.donaterlocation }}</span>
                   </div>
                 </div>
               </div>
-              <div class="item">
-                <div class="testimony-wrap p-4 pb-5">
-                  <div class="user-img mb-5" style="background-image: url(images/person_2.jpg)">
-                    <span class="quote d-flex align-items-center justify-content-center">
-                      <i class="icon-quote-left"></i>
-                    </span>
-                  </div>
-                  <div class="text text-center">
-                    <p class="mb-5 pl-4 line">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                    <p class="name">Garreth Smith</p>
-                    <span class="position">Interface Designer</span>
-                  </div>
-                </div>
-              </div>
-              <div class="item">
-                <div class="testimony-wrap p-4 pb-5">
-                  <div class="user-img mb-5" style="background-image: url(images/person_3.jpg)">
-                    <span class="quote d-flex align-items-center justify-content-center">
-                      <i class="icon-quote-left"></i>
-                    </span>
-                  </div>
-                  <div class="text text-center">
-                    <p class="mb-5 pl-4 line">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                    <p class="name">Garreth Smith</p>
-                    <span class="position">UI Designer</span>
-                  </div>
-                </div>
-              </div>
-              <div class="item">
-                <div class="testimony-wrap p-4 pb-5">
-                  <div class="user-img mb-5" style="background-image: url(images/person_1.jpg)">
-                    <span class="quote d-flex align-items-center justify-content-center">
-                      <i class="icon-quote-left"></i>
-                    </span>
-                  </div>
-                  <div class="text text-center">
-                    <p class="mb-5 pl-4 line">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                    <p class="name">Garreth Smith</p>
-                    <span class="position">Web Developer</span>
-                  </div>
-                </div>
-              </div>
-              <div class="item">
-                <div class="testimony-wrap p-4 pb-5">
-                  <div class="user-img mb-5" style="background-image: url(images/person_1.jpg)">
-                    <span class="quote d-flex align-items-center justify-content-center">
-                      <i class="icon-quote-left"></i>
-                    </span>
-                  </div>
-                  <div class="text text-center">
-                    <p class="mb-5 pl-4 line">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                    <p class="name">Garreth Smith</p>
-                    <span class="position">System Analyst</span>
-                  </div>
-                </div>
-              </div>
+              {% endfor %}
+             
             </div>
           </div>
         </div>
@@ -342,9 +299,11 @@
           	<span>Get e-mail updates about our latest shops and special offers</span>
           </div>
           <div class="col-md-6 d-flex align-items-center">
-            <form action="#" class="subscribe-form">
+            <form method ="POST" enctype="multipart/form-data" class="subscribe-form">
               <div class="form-group d-flex">
-                <input type="text" class="form-control" placeholder="Enter email address">
+                {% csrf_token %}
+                <!-- <input type="text" class="form-control" placeholder="Enter email address"> -->
+                <input type="email" class="form-control" name="subcriber" maxlength="500" required="" id="id_subcriber">
                 <input type="submit" value="Subscribe" class="submit px-3">
               </div>
             </form>

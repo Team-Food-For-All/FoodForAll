@@ -11,19 +11,43 @@ from django.shortcuts import render, HttpResponse,redirect
 class HomeView(TemplateView):
     template_name = "home.html"
 
+    
+
     def get(self, request):
+        form = SubcriberForm()
         carosels = Carosel.objects.all()
+        partners = Partner.objects.all()
+        donaters = Donater.objects.all()
+        args = {'carosels': carosels,
+                'partners': partners, 
+                'donaters': donaters,
+                'form':form
+                                     }
+        # args1= {'partners': partners}
+        
+        return render(request, self.template_name,args)
+    
+    # def get(self, request):
+        
+    #     partners = Partner.objects.all()
+        
+    #     args1 = {'partners': partners} 
+    #     return render(request, self.template_name, args1)
 
-        args = {'carosels': carosels}
-        return render(request, self.template_name, args)
+    def post(self, request):
+        form = SubcriberForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect ('/home')
+
+        args = {'form':form }
+        return render(request,self.template_name, args)
 
 
 
 
-
-
-from home.models import Post, Carosel
-from home.forms import HomeForm
+from home.models import Post, Carosel, Partner, Donater
+from home.forms import HomeForm, SubcriberForm
 from django.views.generic import ListView, CreateView 
 
 class postfood(TemplateView):
@@ -53,7 +77,6 @@ class postfood(TemplateView):
 
 
 
-# def PostFood(request):
-#     return render (request, 'postfood.html')
+
 
 

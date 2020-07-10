@@ -12,3 +12,23 @@ class Carosel(models.Model):
     caroselimg = models.ImageField(upload_to='carosel_image', blank=True)
     des1 = models.CharField(max_length=500)
     des2 = models.CharField(max_length=500)
+
+class Partner(models.Model):
+    partnerimg =  models.ImageField(upload_to='partner_image', blank=True)
+    partnername = models.CharField(max_length=500)
+    partnerdes = models.CharField(max_length=500)
+
+class Donater(models.Model):
+    donaterimg = models.ImageField(upload_to='donater_image', blank=True)
+    donaterdes = models.TextField(max_length=500)
+    donaterlocation = models.CharField(max_length=500)
+    donatername = models.CharField(max_length=500)
+
+class Subcriber(models.Model):
+    subcriber = models.EmailField(max_length=500)
+
+    def __str__(self):
+        return self.subcriber
+
+
+

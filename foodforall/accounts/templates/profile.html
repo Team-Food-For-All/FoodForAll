@@ -10,6 +10,7 @@
     <p>Description : {{user.userprofile.description}}</p> <br>
     <p>Phone : {{user.userprofile.phone}}</p> <br>
     <p>Location : {{user.userprofile.city}}</p><br>
+   
     {% if user.userprofile.image %}
     <p><img src="{{ user.userprofile.image.url }}" width="240"></p>
     {% endif %}
