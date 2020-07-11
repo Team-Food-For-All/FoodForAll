@@ -30,5 +30,16 @@ class Subcriber(models.Model):
     def __str__(self):
         return self.subcriber
 
+class Contactinfo(models.Model):
+    name = models.CharField(max_length=500)
+    email = models.EmailField(max_length=500)
+    subject = models.CharField(max_length=500)
+    message = models.TextField(max_length=500)
+
+    def __str__(self):
+        return self.name
+        
+
+
 
 

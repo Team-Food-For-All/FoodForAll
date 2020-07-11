@@ -47,7 +47,7 @@ class HomeView(TemplateView):
 
 
 from home.models import Post, Carosel, Partner, Donater
-from home.forms import HomeForm, SubcriberForm
+from home.forms import HomeForm, SubcriberForm, ContactForm
 from django.views.generic import ListView, CreateView 
 
 class postfood(TemplateView):
@@ -74,6 +74,27 @@ class postfood(TemplateView):
 
         args = {'form':form , 'text': text}
         return render(request,self.template_name, args)
+
+class Contact(TemplateView):
+    template_name = "contact.html"
+
+    def get(self, request):
+        form = ContactForm()
+        args ={'form':form}
+
+        return render(request, self.template_name,args)
+
+    def post(self, request):
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect ('/contact')
+
+        args = {'form':form }
+        return render(request,self.template_name, args)
+
+
+
 
 
 

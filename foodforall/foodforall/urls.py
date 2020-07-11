@@ -18,7 +18,7 @@ from django.urls import path, include
 from foodforall import views
 from django.conf import settings
 from django.conf.urls.static import static
-from home.views import postfood
+from home.views import postfood, Contact
 
 
 urlpatterns = [
@@ -27,6 +27,7 @@ urlpatterns = [
     path('account/',include('accounts.urls')),
     path('home/',include('home.urls')),
     path('postfood/',postfood.as_view(), name='post'),
+    path('contact/',Contact.as_view(), name='contact'),
     
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

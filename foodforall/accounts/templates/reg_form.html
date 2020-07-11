@@ -2,13 +2,243 @@
 {% load static %}
 {% block body %}
 <div class="container">
-    <h1>Signup</h1>
-    <form method="POST">
+    
+    <!-- <form method="POST">
         {% csrf_token %}
         {{ form.as_p }}
         <button type="submit">Signup</button>
-    </form>
+    </form> -->
 
+    <!-- <form method="POST"> -->
+        <!-- <input type="hidden" name="csrfmiddlewaretoken" value="fdLKdF6Hkj6lpVIpafWq1ZpiRMeKWXJUQLa4YlHGz9Q9ASMPV5k3DzhQT3LrlX13"> -->
+        <!-- <p><label >Username:</label> <input type="text" name="username"  id="id_username"> </p>
+<p><label for="id_first_name">First name:</label> <input type="text" name="first_name"  id="id_first_name"></p>
+<p><label for="id_last_name">Last name:</label> <input type="text" name="last_name"  id="id_last_name"></p>
+<p><label for="id_email">Email:</label> <input type="email" name="email" required="" id="id_email"></p>
+<p><label for="id_password1">Password:</label> <input type="password" name="password1" autocomplete="new-password" required="" id="id_password1"> </p>
+<p><label for="id_password2">Password confirmation:</label> <input type="password" name="password2" autocomplete="new-password" required="" id="id_password2"> </p>
+        <button type="submit">Signup</button>
+    </form> -->
+
+
+
+    <div class="signin">
+        <div class="animated">
+            <div class="signup-content ">
+                <div class="signup-form animated slideInLeft  ">
+
+                    <h2 class="form-title">Sign-Up</h2>
+                    <form class="register-form" method="post">
+                        {% csrf_token %}
+
+                        <div class="form-group">
+                            <label for="name"><i class="zmdi zmdi-account material-icons-name"></i></label>
+                            <input type="text" name="username"  id="id_username" placeholder="Username">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="pass"><i class="zmdi zmdi-lock"></i></label>
+        
+                            <div class="password">
+                                 <input type="text" name="first_name"  id="id_first_name" placeholder="First Name">
+                            </div>
+
+                        </div>
+
+                        <div class="form-group">
+                            <label for="pass"><i class="zmdi zmdi-lock"></i></label>
+        
+                            <div class="password">
+                                <input type="text" name="last_name"  id="id_last_name" placeholder="Last Name">
+                            </div>
+
+                        </div>
+
+                        <div class="form-group">
+                            <label for="pass"><i class="zmdi zmdi-lock"></i></label>
+        
+                            <div class="password">
+                                <input type="email" name="email" required="" id="id_email" placeholder="Email">
+                            </div>
+
+                        </div>
+
+                        <div class="form-group">
+                            <label for="pass"><i class="zmdi zmdi-lock"></i></label>
+        
+                            <div class="password">
+                                <input type="password" name="password1" autocomplete="new-password" required="" id="id_password1" placeholder="Password">
+                            </div>
+
+                        </div>
+
+                        <div class="form-group">
+                            <label for="pass"><i class="zmdi zmdi-lock"></i></label>
+        
+                            <div class="password">
+                                <input type="password" name="password2" autocomplete="new-password" required="" id="id_password2" placeholder="Comfirm Password">
+                            </div>
+
+                        </div>
+
+                        
+                        <div class="form-group form-button">
+                            <input type="submit" name="signup" placeholder="sigin" id="signup" class="form-submit">
+                   
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <style>
+
+
+        .signup-content {
+            padding: 75px 0;
+        }
+
+        .signup-form {
+
+            margin-top: 15px;
+            width: 100%;
+        }
+
+
+        .signup-form,
+        .signup-image,
+        .signin-form,
+        .signin-image {
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .form-title {
+            margin-bottom: 33px;
+            text-align: center;
+        }
+
+        .register-form {
+            width: 100%;
+        }
+
+        .form-group {
+            position: relative;
+            margin-bottom: 25px;
+            overflow: hidden;
+        }
+
+        .form-group:last-child {
+            margin-bottom: 0px;
+            text-align: center;
+        }
+
+        .form-group {
+            position: relative;
+            margin-bottom: 25px;
+            overflow: hidden;
+        }
+
+        label {
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            -moz-transform: translateY(-50%);
+            -webkit-transform: translateY(-50%);
+            -o-transform: translateY(-50%);
+            -ms-transform: translateY(-50%);
+            color: #222;
+        }
+
+         input {
+            width: 100%;
+            border: none;
+            border-bottom: 1px solid #999;
+            padding: 6px 30px;
+            font-family: Poppins;
+            box-sizing: border-box;
+        }
+
+        .password input {
+            width: 100%;
+            border: none;
+            border-bottom: 1px solid #999;
+            padding: 6px 30px;
+            font-family: Poppins;
+            box-sizing: border-box;
+        }
+
+        -->input[type=checkbox]:not(old) {
+            float: left;
+            width: 2em;
+            margin: 10px;
+            padding: 0;
+            font-size: 1em;
+            /* display: none; */
+        }
+
+        input[type=checkbox]:not(old)+label {
+            display: inline-block;
+            line-height: 1.5em;
+            margin-top: 6px;
+        }
+
+        .label-agree-term {
+            position: relative;
+            top: 0%;
+            transform: translateY(0);
+            -moz-transform: translateY(0);
+            -webkit-transform: translateY(0);
+            -o-transform: translateY(0);
+            -ms-transform: translateY(0);
+        }
+
+        .form-group:last-child {
+            margin-bottom: 0px;
+            margin-top: 55px;
+        }
+
+        .form-submit {
+            display: inline-block;
+            background: #82ae46;
+            ;
+            color: #fff;
+            border-bottom: none;
+            width: auto;
+            padding: 15px 39px;
+            border-radius: 5px;
+            -moz-border-radius: 5px;
+            -webkit-border-radius: 5px;
+            -o-border-radius: 5px;
+            -ms-border-radius: 5px;
+            margin-top: 25px;
+            cursor: pointer;
+        }
+
+        .signup-image {
+            margin-top: 15px;
+            width: 100%;
+        }
+
+        figure {
+            margin-bottom: 50px;
+            text-align: center;
+        }
+
+        .signup-image .image img {
+            height: 50%;
+            width: 45%;
+        }
+
+        .signup-image-link {
+            font-size: 14px;
+            color: #222;
+            display: block;
+            text-align: center;
+        }
+    </style>
 </div>
 
 {% endblock %}

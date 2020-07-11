@@ -1,19 +1,195 @@
-{% extends 'main.html' %} 
+{% extends 'main.html' %}
 
 
 {% load static %}
 {% block body %}
 <div class="container">
-    <h1>login</h1>
-    <form method="POST">
-        {% csrf_token %}
-        <!-- {{ form.as_p }} -->
-        <button type="submit">Login</button>
+    <div class="signin">
+        <div class="animated">
+            <div class="signup-content ">
+                <div class="signup-form animated slideInLeft  ">
 
-        <p><label for="id_username">Username:</label> <input type="text" name="username"  autocomplete="username"  id="id_username"></p>
-        <p><label for="id_password">Password:</label> <input type="password" name="password"  id="id_password"></p>
-    </form>
+                    <h2 class="form-title">Login</h2>
+                    <form class="register-form" method="post">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label for="name"><i class="zmdi zmdi-account material-icons-name"></i></label>
+                            {#                                <input type="text" name="name" id="name" placeholder="Your Name" {{ form.name }}>#}
+                            <input type="text" name="username" autocomplete="username" id="id_username"
+                                placeholder="Your UserName">
+                        </div>
+                        <div class="form-group">
+                            <label for="pass"><i class="zmdi zmdi-lock"></i></label>
+        
+                            <div class="password"> <input type="password" name="password" id="id_password" placeholder="Password">
+                            </div>
 
+                        </div>
+
+                        <div class="form-group">
+                            <input type="checkbox" name="agree-term" id="agree-term" class="agree-term">
+                            <label for="agree-term" class="label-agree-term"><span><span></span></span>I agree all
+                                statements in <a href="#" class="term-service">Terms of service</a></label>
+                            <a href="#" class="signup-image-link">I am already member</a>
+                        </div>
+                        <div class="form-group form-button">
+                            <input type="submit" name="signup" placeholder="sigin" id="signup" class="form-submit">
+                            {#                                <button type="Submit" >submit</button>#}
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <style>
+
+
+        .signup-content {
+            padding: 75px 0;
+        }
+
+        .signup-form {
+
+            margin-top: 15px;
+            width: 100%;
+        }
+
+
+        .signup-form,
+        .signup-image,
+        .signin-form,
+        .signin-image {
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .form-title {
+            margin-bottom: 33px;
+            text-align: center;
+        }
+
+        .register-form {
+            width: 100%;
+        }
+
+        .form-group {
+            position: relative;
+            margin-bottom: 25px;
+            overflow: hidden;
+        }
+
+        .form-group:last-child {
+            margin-bottom: 0px;
+            text-align: center;
+        }
+
+        .form-group {
+            position: relative;
+            margin-bottom: 25px;
+            overflow: hidden;
+        }
+
+        label {
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            -moz-transform: translateY(-50%);
+            -webkit-transform: translateY(-50%);
+            -o-transform: translateY(-50%);
+            -ms-transform: translateY(-50%);
+            color: #222;
+        }
+
+         input {
+            width: 100%;
+            border: none;
+            border-bottom: 1px solid #999;
+            padding: 6px 30px;
+            font-family: Poppins;
+            box-sizing: border-box;
+        }
+
+        .password input {
+            width: 100%;
+            border: none;
+            border-bottom: 1px solid #999;
+            padding: 6px 30px;
+            font-family: Poppins;
+            box-sizing: border-box;
+        }
+
+        -->input[type=checkbox]:not(old) {
+            float: left;
+            width: 2em;
+            margin: 10px;
+            padding: 0;
+            font-size: 1em;
+            /* display: none; */
+        }
+
+        input[type=checkbox]:not(old)+label {
+            display: inline-block;
+            line-height: 1.5em;
+            margin-top: 6px;
+        }
+
+        .label-agree-term {
+            position: relative;
+            top: 0%;
+            transform: translateY(0);
+            -moz-transform: translateY(0);
+            -webkit-transform: translateY(0);
+            -o-transform: translateY(0);
+            -ms-transform: translateY(0);
+        }
+
+        .form-group:last-child {
+            margin-bottom: 0px;
+            margin-top: 55px;
+        }
+
+        .form-submit {
+            display: inline-block;
+            background: #82ae46;
+            ;
+            color: #fff;
+            border-bottom: none;
+            width: auto;
+            padding: 15px 39px;
+            border-radius: 5px;
+            -moz-border-radius: 5px;
+            -webkit-border-radius: 5px;
+            -o-border-radius: 5px;
+            -ms-border-radius: 5px;
+            margin-top: 25px;
+            cursor: pointer;
+        }
+
+        .signup-image {
+            margin-top: 15px;
+            width: 100%;
+        }
+
+        figure {
+            margin-bottom: 50px;
+            text-align: center;
+        }
+
+        .signup-image .image img {
+            height: 50%;
+            width: 45%;
+        }
+
+        .signup-image-link {
+            font-size: 14px;
+            color: #222;
+            display: block;
+            text-align: center;
+        }
+    </style>
 </div>
 
 {% endblock %}
