@@ -46,7 +46,7 @@ class HomeView(TemplateView):
 
 
 
-from home.models import Post, Carosel, Partner, Donater
+from home.models import Post, Carosel, Partner, Donater,EventInfo
 from home.forms import HomeForm, SubcriberForm, ContactForm
 from django.views.generic import ListView, CreateView 
 
@@ -93,7 +93,19 @@ class Contact(TemplateView):
         args = {'form':form }
         return render(request,self.template_name, args)
 
+class About(TemplateView):
+    template_name = "about.html"
 
+
+class Event(TemplateView):
+    template_name = "event.html"
+
+    def get(self, request):
+        events = EventInfo.objects.all()
+        args = { 'events':events}
+        return render(request,self.template_name, args )
+
+    
 
 
 

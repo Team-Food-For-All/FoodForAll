@@ -4,9 +4,14 @@ from django.contrib.auth.models import User
 class Post(models.Model):
     postfood = models.CharField(max_length=500)
     foodimg = models.ImageField(upload_to='food_image', blank=True)
-    fooddes =  models.CharField(max_length=500)
+    fooddes =  models.TextField(max_length=500)
     date = models.DateTimeField(auto_now=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
+
+    
+    def __str__(self):
+        return self.subcriber
+
     
 class Carosel(models.Model):
     caroselimg = models.ImageField(upload_to='carosel_image', blank=True)
@@ -38,6 +43,18 @@ class Contactinfo(models.Model):
 
     def __str__(self):
         return self.name
+
+class EventInfo(models.Model):
+    eventname = models.CharField(max_length=500)
+    eventimg =  models.ImageField(upload_to='Event_image', blank=True)
+    eventdes =   models.CharField(max_length=500)
+    eventlocation =  models.CharField(max_length=500)
+    eventcontact = models.IntegerField(default=0)
+    date = models.DateTimeField()
+    uploaddate = models.DateTimeField(auto_now=True)
+
+    
+
         
 
 

@@ -18,7 +18,7 @@ from django.urls import path, include
 from foodforall import views
 from django.conf import settings
 from django.conf.urls.static import static
-from home.views import postfood, Contact
+from home.views import postfood, Contact, About, Event
 
 
 urlpatterns = [
@@ -28,6 +28,8 @@ urlpatterns = [
     path('home/',include('home.urls')),
     path('postfood/',postfood.as_view(), name='post'),
     path('contact/',Contact.as_view(), name='contact'),
+    path('about/',About.as_view(), name='about'),
+    path('event/',Event.as_view(), name='event'),
     
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

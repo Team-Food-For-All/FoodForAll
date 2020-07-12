@@ -1,0 +1,51 @@
+{% extends 'main.html' %}
+
+{% block body %}
+<div class="hero-wrap hero-bread" style="background-image: url('/static/images/bg_1.jpg');">
+    <div class="container">
+      <div class="row no-gutters slider-text align-items-center justify-content-center">
+        <div class="col-md-9 ftco-animate text-center fadeInUp ftco-animated">
+            <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home</a></span> <span>Events</span></p>
+          <h1 class="mb-0 bread">Charity Events</h1>
+        </div>
+      </div>
+    </div>
+  </div>
+<div class="container">
+    <section class="ftco-section ftco-degree-bg">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-12 ftco-animate fadeInUp ftco-animated">
+                          <div class="row">
+                            {% for event in events %}
+                            <div class="col-md-12 d-flex ftco-animate fadeInUp ftco-animated">
+                                <div class="blog-entry align-self-stretch d-md-flex">
+                                   
+                                  <a href="#" class="block-20" style="background-image: url('{{ event.eventimg.url }}');">
+                                  </a>
+                                  <div class="text d-block pl-md-4">
+                                      <div class="meta mb-3">
+                                      <div><a href="#">{{ event.date }}</a></div>
+                                      <div><a href="#">Admin</a></div>
+
+                                    </div>
+                                    <h3 class="heading"><a href="#">{{ event.eventname }}</a></h3>
+                                    <p>{{ event.eventdes }}</p>
+                                    <p>Location: {{ event.eventlocation }}</p>
+                                    <p>Contact: {{ event.eventcontact }}</p>
+                                    <p>Upload-Date: {{ event.uploaddate }}</p>
+                                  </div>
+                                </div>
+                              </div>
+                              {% endfor %}
+ 
+                          </div>
+            </div> <!-- .col-md-8 -->
+            
+  
+          </div>
+        </div>
+      </section>
+    
+</div>
+{% endblock %}

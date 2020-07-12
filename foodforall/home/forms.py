@@ -12,7 +12,7 @@ class HomeForm(forms.ModelForm):
             'postfood',
             'foodimg',
             'fooddes',
-            'user'
+            
 
         }
 
