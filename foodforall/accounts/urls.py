@@ -5,6 +5,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.auth.forms import UserChangeForm, PasswordChangeForm
+from accounts.views import ProfileForm
 
 urlpatterns = [
     # path('', views.home, name='home'),
@@ -14,6 +15,7 @@ urlpatterns = [
     path('profile/', views.view_profile, name ='view_profile'),
     path('profile/edit', views.edit_profile, name = "edit_profile"),
     path('change-password/', views.change_password, name ='change_password'),
+    path('profile/profileform',ProfileForm.as_view(), name='foodinfo')
     
 ]
 if settings.DEBUG:

@@ -8,6 +8,7 @@ from accounts.forms import (
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserChangeForm, PasswordChangeForm
 from django.contrib.auth import update_session_auth_hash
+from django.views.generic import TemplateView
 from django.contrib.auth.decorators import login_required
 # Create your views here.
 # def home(request):
@@ -70,4 +71,24 @@ def change_password(request):
         return render(request,'change_password.html', args)
 
 
+class ProfileForm(TemplateView):
+    template_name = "profileform.html"
+
+    def get(self, request):
+        form = EditProfilePhoto
+        args = {
+                'form':form
+                                     }
+        # args1= {'partners': partners}
+        
+        return render(request, self.template_name,args)
+
+    def post(self, request):
+        form = EditProfilePhoto(request.POST,request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect ('/profile')
+
+        args = {'form':form }
+        return render(request,self.template_name, args)
 

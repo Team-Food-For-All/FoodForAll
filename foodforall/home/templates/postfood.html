@@ -5,8 +5,8 @@
     <div class="container">
       <div class="row no-gutters slider-text align-items-center justify-content-center">
         <div class="col-md-9 ftco-animate text-center fadeInUp ftco-animated">
-            <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home</a></span> <span>Products</span></p>
-          <h1 class="mb-0 bread">Products</h1>
+            <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home</a></span> <span>Foods</span></p>
+          <h1 class="mb-0 bread">Post Food</h1>
         </div>
       </div>
     </div>
@@ -40,6 +40,7 @@
 
 
     {% endfor %} -->
+    {% if user.is_authenticated %}
     <div class="row block-9">
       
         <div class="col-md-6 order-md-last d-flex">
@@ -90,6 +91,39 @@
         {% for post in posts %}
         <div class="col-md-6 col-lg-3 ftco-animate fadeInUp ftco-animated">
             <div class="product">
+                <a href="/foodinfo" class="img-prod">
+                    {% if post.foodimg %}
+                    <img class="img-fluid" src="{{ post.foodimg.url }}" alt="Colorlib Template">
+                    {% endif %}
+                </a>
+                <div class="text py-3 pb-4 px-3 text-center">
+                    <h3><a href="#"> {{ post.postfood }} </a></h3>
+                    <div class="d-flex">
+                        <div class="pricing">
+                            <p class="price">Food by: {{ post.user.username }}</p>
+                        </div>
+                    </div>
+                    <div class="bottom-area d-flex px-3">
+                        <div class="m-auto d-flex">
+                           
+                            <a href="#" class="buy-now d-flex justify-content-center align-items-center mx-1">
+                                <span><i class="ion-ios-cart"></i></span>
+                            </a>
+                     
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+         {% endfor %}
+
+    </div>
+    {% else %}
+    <div class="row" style="margin-top:100px;">
+        {% for post in posts %}
+        <div class="col-md-6 col-lg-3 ftco-animate fadeInUp ftco-animated">
+            <div class="product">
                 <a href="#" class="img-prod">
                     {% if post.foodimg %}
                     <img class="img-fluid" src="{{ post.foodimg.url }}" alt="Colorlib Template">
@@ -118,6 +152,7 @@
          {% endfor %}
 
     </div>
+    {% endif %}
 </div>
 
 {% endblock %}

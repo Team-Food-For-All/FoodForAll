@@ -105,6 +105,15 @@ class Event(TemplateView):
         args = { 'events':events}
         return render(request,self.template_name, args )
 
+class FoodInfo(TemplateView):
+    template_name = "foodinfo.html"
+
+    def get(self, request):
+       
+        posts = Post.objects.all()
+        args = { 'post':posts}
+        return render(request,self.template_name, args )
+
     
 
 

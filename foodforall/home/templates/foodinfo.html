@@ -1,0 +1,40 @@
+{% extends 'main.html' %}
+
+{% block body %}
+<div class="container">
+    <section class="ftco-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 mb-5 ftco-animate fadeInUp ftco-animated">
+                    <a href="/static/images/product-1.jpg" class="image-popup">
+                        {% if post.foodimg %}
+                        <img src="{{ post.foodimg.url }}"
+                            class="img-fluid" alt="Colorlib Template">
+                            {% endif %}
+                        </a>
+                </div>
+                <div class="col-lg-6 product-details pl-md-5 ftco-animate fadeInUp ftco-animated">
+                    <h3>Food:{{ post.postfood }}</h3>
+                    <b><p>Food By : {{ user.username }}</p></b>
+
+                    <p>A small river named Duden flows by their place and supplies it with the necessary regelialia. It
+                        is a paradisematic country, in which roasted parts of sentences fly into your mouth. Text should
+                        turn around and return to its own, safe country. But nothing the copy said could convince her
+                        and so it didn’t take long until.
+                    </p>
+
+                    <p> Location: Kathmandu</p>
+                    <p>Contact: 934823948</p>
+
+                    <div class="row mt-4">
+
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+</div>
+{% endblock %}

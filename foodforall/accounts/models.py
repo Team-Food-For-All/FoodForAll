@@ -18,11 +18,11 @@ class UserProfile(models.Model):
     def __str__(self):
         return self.user.username
 
-    def create_profile(sender, ** kwarg):
-        if kwarg['created']:
-            user_profile = UserProfile.objects.create(user=kwarg['instance'])
+def create_profile(sender, ** kwarg):
+    if kwarg['created']:
+        user_profile = UserProfile.objects.create(user=kwarg['instance'])
 
-            post_save.connect(create_profile, sender=User)
+        post_save.connect(create_profile, sender=User)
 
             
 
