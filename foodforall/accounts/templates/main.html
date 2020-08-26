@@ -47,7 +47,11 @@
               </div>
               {% if user.is_authenticated %}
 					    <div class="col-md-5 pr-4 d-flex topper align-items-center text-lg-right">
-						    <span class="text">Name: {{ user.first_name }}</span>
+						    <span class="text">Name: {{ user.first_name }}
+                  {% if user.userprofile.image %}
+                  <img src="{{ user.userprofile.image.url }}" alt="Circle Image" class="img-raised rounded-circle img-fluid" style="width: 25px;height: 25px;">
+                  {% endif %}
+                </span>
               </div>
               {% else %}
               <div class="col-md-5 pr-4 d-flex topper align-items-center text-lg-right">
@@ -73,14 +77,23 @@
 	      <div class="collapse navbar-collapse" id="ftco-nav">
           {% if user.is_authenticated %}
 	        <ul class="navbar-nav ml-auto">
-	          <li class="nav-item active"><a href="/home" class="nav-link">Home</a></li>
-			  <li class="nav-item active"><a href="/postfood" class="nav-link">Foods</a></li>
+	          <li class="nav-item "><a href="/home" class="nav-link">Home</a></li>
+        
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Food</a>
+          <div class="dropdown-menu" aria-labelledby="dropdown04">
+            <a class="dropdown-item" href="/postfood">Post Food</a>
+            <a class="dropdown-item" href="/foodinfo">Available Foods</a>
+
+          </div>
+        </li>
+     
 			  <li class="nav-item"><a href="/event" class="nav-link">Charity-Event</a></li>
-			  <li class="nav-item active"><a href="/account/profile" class="nav-link">Profile</a></li>
+			  <li class="nav-item "><a href="/account/profile" class="nav-link">Profile</a></li>
 	      <li class="nav-item"><a href="/about" class="nav-link">About Us</a></li>
 			  <li class="nav-item"><a href="/contact" class="nav-link">Contact</a></li>
-        <li class="nav-item active"><a href="/account/logout/" class="nav-link">logout</a></li>
-	          <li class="nav-item cta cta-colored"><a href="#" class="nav-link"><span class="icon-shopping_cart"></span>[0]</a></li>
+        <li class="nav-item "><a href="/account/logout/" class="nav-link">logout</a></li>
+	      
 
           </ul>
 
@@ -88,13 +101,13 @@
           {% else %}
           <ul class="navbar-nav ml-auto">
 	          <li class="nav-item active"><a href="/home" class="nav-link">Home</a></li>
-			  <li class="nav-item active"><a href="/postfood" class="nav-link">Foods</a></li>
+			  <li class="nav-item "><a href="/postfood" class="nav-link">Foods</a></li>
 			  <li class="nav-item"><a href="/event" class="nav-link">Charity-Event</a></li>
 
 	      <li class="nav-item"><a href="/about" class="nav-link">About Us</a></li>
 			  <li class="nav-item"><a href="/contact" class="nav-link">Contact</a></li>
-			  <li class="nav-item active"><a href="/account/login/" class="nav-link">Login</a></li>
-        <li class="nav-item active"><a href="/account/register" class="nav-link">Signup</a></li>
+			  <li class="nav-item "><a href="/account/login/" class="nav-link">Login</a></li>
+        <li class="nav-item "><a href="/account/register" class="nav-link">Signup</a></li>
         
 	        
 
@@ -336,9 +349,9 @@
             <div class="ftco-footer-widget mb-4 ml-md-5">
               <h2 class="ftco-heading-2">Menu</h2>
               <ul class="list-unstyled">
-                <li><a href="#" class="py-2 d-block">Shop</a></li>
+                
                 <li><a href="#" class="py-2 d-block">About</a></li>
-                <li><a href="#" class="py-2 d-block">Journal</a></li>
+                
                 <li><a href="#" class="py-2 d-block">Contact Us</a></li>
               </ul>
             </div>
@@ -348,7 +361,7 @@
               <h2 class="ftco-heading-2">Help</h2>
               <div class="d-flex">
 	              <ul class="list-unstyled mr-l-5 pr-l-3 mr-4">
-	                <li><a href="#" class="py-2 d-block">Shipping Information</a></li>
+	               
 	                <li><a href="#" class="py-2 d-block">Returns &amp; Exchange</a></li>
 	                <li><a href="#" class="py-2 d-block">Terms &amp; Conditions</a></li>
 	                <li><a href="#" class="py-2 d-block">Privacy Policy</a></li>
@@ -365,7 +378,7 @@
             	<h2 class="ftco-heading-2">Have a Questions?</h2>
             	<div class="block-23 mb-3">
 	              <ul>
-	                <li><span class="icon icon-map-marker"></span><span class="text">203 Fake St. Mountain View, San Francisco, California, USA</span></li>
+	                <li><span class="icon icon-map-marker"></span><span class="text">203 Fake St. Kathmandu Nepal</span></li>
 	                <li><a href="#"><span class="icon icon-phone"></span><span class="text">+2 392 3929 210</span></a></li>
 	                <li><a href="#"><span class="icon icon-envelope"></span><span class="text">info@yourdomain.com</span></a></li>
 	              </ul>

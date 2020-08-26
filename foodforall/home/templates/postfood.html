@@ -3,121 +3,59 @@
 {% block body %}
 <div class="hero-wrap hero-bread" style="background-image: url('/static/images/bg_1.jpg');">
     <div class="container">
-      <div class="row no-gutters slider-text align-items-center justify-content-center">
-        <div class="col-md-9 ftco-animate text-center fadeInUp ftco-animated">
-            <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home</a></span> <span>Products</span></p>
-          <h1 class="mb-0 bread">Products</h1>
+        <div class="row no-gutters slider-text align-items-center justify-content-center">
+            <div class="col-md-9 ftco-animate text-center fadeInUp ftco-animated">
+                <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home</a></span> <span>Foods</span></p>
+                <h1 class="mb-0 bread">Post Food</h1>
+            </div>
         </div>
-      </div>
     </div>
-  </div>
-  <h1 style="text-align: center;">Post Food</h1>
+</div>
+<h1 style="text-align: center;">Post Food</h1>
 
 <div class="container">
-    <!-- <h1>Post Food</h1>
-    <form method ="POST" enctype="multipart/form-data">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">submit</button>
-    </form>
-    <h2>{{ text }}</h2>
 
-    {% for post in posts %}
-        <h1>{{ post.postfood }}</h1>
-        {% if post.foodimg %}
-        <img src="{{ post.foodimg.url }}" width="240px">
-        {% endif %}
-        <p>{{ post.date }}</p>
-        <p>{{ post.user.username }}</p>
-        <form method="POST" enctype="multipart/form-data">
-            <input type="hidden" name="csrfmiddlewaretoken" value="q1IYcOVjIGiNgKGjdKQqFlpd7slofTA2NHKvjx73J9PePDITMAInh4dGROC8fUT8">
-            <p><label for="id_fooddes">Fooddes:</label> <textarea name="fooddes" cols="40" rows="10" maxlength="500" required="" id="id_fooddes"></textarea></p>
-<p><label for="id_foodimg">Foodimg:</label> <input type="file" name="foodimg" accept="image/*" id="id_foodimg"></p>
-<p><label for="id_postfood">Postfood:</label> <input type="text" name="postfood" maxlength="500" required="" id="id_postfood"></p>
-            <button type="submit">submit</button>
-        </form>
-
-
-
-    {% endfor %} -->
+    {% if user.is_authenticated %}
     <div class="row block-9">
-      
-        <div class="col-md-6 order-md-last d-flex">
-            
-          <form method="POST" enctype="multipart/form-data" class="bg-white p-5 contact-form" style="width: 100%;">
-            {% csrf_token %}
-            <div class="form-group">
-              <input type="text" name="postfood" maxlength="500" required="" id="id_postfood"  class="form-control" placeholder="Food Name">
-            </div>
-            <div class="form-group">
-              <textarea name="fooddes" cols="40" rows="10" maxlength="500" required="" id="id_fooddes"  class="form-control" placeholder="Food Description"></textarea>
-            </div>
-            <div class="form-group">
-             <input type="file" name="foodimg" accept="image/*" id="id_foodimg">
-            </div>
-            <div class="form-group">
-                 <button type="submit" class="btn btn-primary py-3 px-5">Post</button>
-            </div>
-          </form>
-          <!-- <form method ="POST" enctype="multipart/form-data">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <button type="submit" class="btn btn-primary py-3 px-5">submit</button>
-        </form> -->
-        <!-- <h2>{{ text }}</h2> -->
-    
-        <!-- {% for post in posts %}
-            <h1>{{ post.postfood }}</h1>
-            {% if post.foodimg %}
-            <img src="{{ post.foodimg.url }}" width="240px">
-            {% endif %}
-            <p>{{ post.date }}</p>
-            <p>{{ post.user.username }}</p>
 
-            {% endfor %} --> 
+        <div class="col-md-6 order-md-last d-flex">
+
+            <form method="POST" enctype="multipart/form-data" class="bg-white p-5 contact-form" style="width: 100%;">
+                {% csrf_token %}
+                <div class="form-group">
+                    <input type="text" name="postfood" maxlength="500" required="" id="id_postfood" class="form-control"
+                        placeholder="Food Name">
+                </div>
+                <div class="form-group">
+                    <textarea name="fooddes" cols="40" rows="10" maxlength="500" required="" id="id_fooddes"
+                        class="form-control" placeholder="Food Description"></textarea>
+                </div>
+                <div class="form-group">
+                    <input type="file" name="foodimg" accept="image/*" id="id_foodimg">
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary py-3 px-5">Post</button>
+                </div>
+            </form>
+    
         </div>
 
-        <div class="col-md-6 d-flex" >
+        <div class="col-md-6 d-flex">
             <img src="/static/images/food.png" alt="" style="
     width: 550px;
 ">
-           
-      </div>
+
+        </div>
 
 
     </div>
     <div class="row" style="margin-top:100px;">
-        {% for post in posts %}
-        <div class="col-md-6 col-lg-3 ftco-animate fadeInUp ftco-animated">
-            <div class="product">
-                <a href="#" class="img-prod">
-                    {% if post.foodimg %}
-                    <img class="img-fluid" src="{{ post.foodimg.url }}" alt="Colorlib Template">
-                    {% endif %}
-                </a>
-                <div class="text py-3 pb-4 px-3 text-center">
-                    <h3><a href="#"> {{ post.postfood }} </a></h3>
-                    <div class="d-flex">
-                        <div class="pricing">
-                            <p class="price">Food by: {{ post.user.username }}</p>
-                        </div>
-                    </div>
-                    <div class="bottom-area d-flex px-3">
-                        <div class="m-auto d-flex">
-                           
-                            <a href="#" class="buy-now d-flex justify-content-center align-items-center mx-1">
-                                <span><i class="ion-ios-cart"></i></span>
-                            </a>
-                     
-                            
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-         {% endfor %}
+
 
     </div>
+    {% else %}
+
+    {% endif %}
 </div>
 
 {% endblock %}

@@ -9,10 +9,6 @@ class Post(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     
-    def __str__(self):
-        return self.subcriber
-
-    
 class Carosel(models.Model):
     caroselimg = models.ImageField(upload_to='carosel_image', blank=True)
     des1 = models.CharField(max_length=500)

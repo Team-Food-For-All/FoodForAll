@@ -1,0 +1,49 @@
+{% extends 'main.html' %}
+
+{% block body %}
+
+<div class="container">
+    
+    <section class="ftco-section">
+        <div class="container">
+            <h1 style="text-align: center;">Available Foods</h1>
+            {% for post in posts %}
+            <div class="row" style="    border: 2px solid #f0f0f0;">
+                <div class="col-lg-6 mb-5 ftco-animate fadeInUp ftco-animated">
+                    <a href="#" class="img-prod">
+                        {% if post.foodimg %}
+                        <img  src="{{ post.foodimg.url }}" alt="Colorlib Template" style="height: 300px; width:300px;">
+                        {% endif %}
+                    </a>
+                </div>
+                <div class="col-lg-6 product-details pl-md-5 ftco-animate fadeInUp ftco-animated">
+                    <h3>Food:{{ post.postfood }}</h3>
+                    <b><p>Food By : {{ post.user.username }}</p></b>
+
+                    <p>
+                        {{ post.fooddes }}
+                    </p>
+
+                    <p> Location: {{ post.user.userprofile.city }}</p>
+                    <p>Contact: {{ post.user.userprofile.phone}}</p>
+                    <p>Upload Date:{{ post.date }}</p>
+
+                    <div class="row mt-4">
+
+
+                    </div>
+
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+
+
+
+
+</div>
+
+
+
+{% endblock %}

@@ -3,6 +3,7 @@ from django.http import HttpResponse
 # # Create your views here.
 # def home(request):
 #     return HttpResponse('It works')
+from django.contrib.auth.models import User
 
 from django.views.generic import TemplateView
 from django.shortcuts import render, HttpResponse,redirect
@@ -55,8 +56,9 @@ class postfood(TemplateView):
 
     def get(self, request):
         form = HomeForm()
-        posts = Post.objects.all()
-        args = {'form':form , 'posts':posts}
+        posts = Post.objects.all().order_by('-date')
+        users = User.objects.exclude(id=request.user.id)
+        args = {'form':form , 'posts':posts,'users':users}
         return render(request,self.template_name, args )
 
     def post(self, request):
@@ -65,14 +67,14 @@ class postfood(TemplateView):
             post = form.save(commit=False)
             # post.foodimg = request.foodimg
             post.user = request.user
-            form.save()
+            post.save()
 
             # text = form.cleaned_data['postfood']
             # form = HomeForm()
             return redirect ('/postfood')
         
 
-        args = {'form':form , 'text': text}
+        args = {'form':form , }
         return render(request,self.template_name, args)
 
 class Contact(TemplateView):
@@ -97,12 +99,23 @@ class About(TemplateView):
     template_name = "about.html"
 
 
+
 class Event(TemplateView):
     template_name = "event.html"
 
     def get(self, request):
-        events = EventInfo.objects.all()
+        events = EventInfo.objects.all().order_by('-uploaddate')
         args = { 'events':events}
+        return render(request,self.template_name, args )
+
+class FoodInfo(TemplateView):
+    template_name = "foodinfo.html"
+
+    def get(self, request):
+        form = HomeForm()
+        posts = Post.objects.all().order_by('-date')
+        users = User.objects.exclude(id=request.user.id)
+        args = {'form':form , 'posts':posts,  'users':users}
         return render(request,self.template_name, args )
 
     

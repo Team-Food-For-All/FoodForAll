@@ -1,15 +1,219 @@
 {% extends 'main.html' %}
 {% load static %}
 {% block body %}
+
+<!-- </div> -->
+
+
 <div class="container">
-<form method="POST">
-    {% csrf_token %}
-    {{ form.as_p }}
-    {{ form1.as_p }}
-    <button type="submit">Submit</button>
+    <div class="signin">
+        <div class="animated">
+            <div class="signup-content ">
+                <div class="signup-form animated slideInLeft  ">
+
+                    <h2 class="form-title">Edit Profile</h2>
+                    <form class="register-form" method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+
+                        <div class="form-group">
+                            <input type="text" name="first_name" value="{{ user.first_name }}" id="id_first_name"
+                                placeholder="First Name">
+                        </div>
+
+                        <div class="form-group">
+                            <input type="text" name="last_name" value="{{ user.last_name }}" id="id_last_name"
+                                placeholder="Last Nmae">
+                        </div>
+
+                        <div class="form-group">
+                            <input type="email" name="email" value="{{ user.email }}" id="id_email" placeholder="Email">
+                        </div>
+
+                        <div class="form-group">
+                            <input type="number" name="phone" value="{{user.userprofile.phone}}" required=""
+                                id="id_phone" placeholder="Phone Number">
+                        </div>
+
+                        <div class="form-group">
+                            <input type="text" name="city" value="{{user.userprofile.city}}" required="" id="id_city"
+                                placeholder="Address">
+                        </div>
+
+                        <div class="form-group">
+                            <input type="text" name="description" value="{{user.userprofile.description}}" required=""
+                                id="id_description" placeholder="Bio">
+                        </div>
+
+                        <p> Currently: <a href="">{{ user.userprofile.image.url  }}</a>
+                            <input type="checkbox" name="image-clear" id="image-clear_id">
+
+                            Change:
+                            <input type="file" name="image" accept="image/*" id="id_image">
+                        </p>
 
 
-</form>
+
+                        <div class="form-group form-button">
+                            <input type="submit" name="signup" placeholder="sigin" id="signup" class="form-submit">
+
+                        </div>
+
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <style>
+        .signup-content {
+            padding: 75px 0;
+        }
+
+        .signup-form {
+
+            margin-top: 15px;
+            width: 100%;
+        }
+
+
+        .signup-form,
+        .signup-image,
+        .signin-form,
+        .signin-image {
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .form-title {
+            margin-bottom: 33px;
+            text-align: center;
+        }
+
+        .register-form {
+            width: 100%;
+        }
+
+        .form-group {
+            position: relative;
+            margin-bottom: 25px;
+            overflow: hidden;
+        }
+
+        .form-group:last-child {
+            margin-bottom: 0px;
+            text-align: center;
+        }
+
+        .form-group {
+            position: relative;
+            margin-bottom: 25px;
+            overflow: hidden;
+        }
+
+        label {
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            -moz-transform: translateY(-50%);
+            -webkit-transform: translateY(-50%);
+            -o-transform: translateY(-50%);
+            -ms-transform: translateY(-50%);
+            color: #222;
+        }
+
+        input {
+            width: 100%;
+            border: none;
+            border-bottom: 1px solid #999;
+            padding: 6px 30px;
+            font-family: Poppins;
+            box-sizing: border-box;
+        }
+
+        .password input {
+            width: 100%;
+            border: none;
+            border-bottom: 1px solid #999;
+            padding: 6px 30px;
+            font-family: Poppins;
+            box-sizing: border-box;
+        }
+
+        -->input[type=checkbox]:not(old) {
+            float: left;
+            width: 2em;
+            margin: 10px;
+            padding: 0;
+            font-size: 1em;
+            /* display: none; */
+        }
+
+        input[type=checkbox]:not(old)+label {
+            display: inline-block;
+            line-height: 1.5em;
+            margin-top: 6px;
+        }
+
+        .label-agree-term {
+            position: relative;
+            top: 0%;
+            transform: translateY(0);
+            -moz-transform: translateY(0);
+            -webkit-transform: translateY(0);
+            -o-transform: translateY(0);
+            -ms-transform: translateY(0);
+        }
+
+        .form-group:last-child {
+            margin-bottom: 0px;
+            margin-top: 55px;
+        }
+
+        .form-submit {
+            display: inline-block;
+            background: #82ae46;
+            ;
+            color: #fff;
+            border-bottom: none;
+            width: auto;
+            padding: 15px 39px;
+            border-radius: 5px;
+            -moz-border-radius: 5px;
+            -webkit-border-radius: 5px;
+            -o-border-radius: 5px;
+            -ms-border-radius: 5px;
+            margin-top: 25px;
+            cursor: pointer;
+        }
+
+        .signup-image {
+            margin-top: 15px;
+            width: 100%;
+        }
+
+        figure {
+            margin-bottom: 50px;
+            text-align: center;
+        }
+
+        .signup-image .image img {
+            height: 50%;
+            width: 45%;
+        }
+
+        .signup-image-link {
+            font-size: 14px;
+            color: #222;
+            display: block;
+            text-align: center;
+        }
+    </style>
+
 </div>
 
 {% endblock %}

@@ -3,20 +3,75 @@
 {% block body %}
 <div class="container">
 
-   <p>UserName: {{ user }}</p>  <br>
-    <p>Name: {{ user.first_name }} </p><br>
-    <p>Last Name :{{ user.last_name }}</p><br>
-    <p>Email:{{ user.email }}</p> <br>
-    <p>Description : {{user.userprofile.description}}</p> <br>
-    <p>Phone : {{user.userprofile.phone}}</p> <br>
-    <p>Location : {{user.userprofile.city}}</p><br>
-   
-    {% if user.userprofile.image %}
-    <p><img src="{{ user.userprofile.image.url }}" width="240"></p>
-    {% endif %}
-    <a href="{% url 'edit_profile' %}">Edit</a>
-    
-   
+
+
+    <div class="profile" style="text-align: center; background-color:#f7f6f2; margin-top:10px; margin-bottom:10px;">
+        <div class="avatar">
+            {% if user.userprofile.image %}
+            <img src="{{ user.userprofile.image.url }}" alt="Circle Image" class="img-raised rounded-circle img-fluid"
+                style="width: 300px; height:300px; margin-top:10px;">
+            {% endif %}
+        </div>
+        <h2 class="title">{{ user }}</h2>
+
+
+        <section class="ftco-section contact-section bg-light">
+            <div class="container">
+                <div class="row d-flex mb-5 contact-info">
+                    <div class="w-100"></div>
+                    <div class="col-md-3 d-flex">
+                        <div class="info bg-white p-4">
+                            <p><span>Name:</span> {{ user.first_name }} {{ user.last_name }}</p>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3 d-flex">
+                        <div class="info bg-white p-4">
+                            <p><span>Phone:</span> <a href="#">{{user.userprofile.phone}}</a></p>
+                        </div>
+                    </div>
+                    <div class="col-md-3 d-flex">
+                        <div class="info bg-white p-4">
+                            <p><span>Email:</span> <a href="#">{{ user.email }}</a></p>
+                        </div>
+                    </div>
+                    <div class="col-md-3 d-flex">
+                        <div class="info bg-white p-4">
+                            <p><span>Address</span> {{user.userprofile.city}}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row d-flex mb-5 contact-info">
+                    <div class="w-100"></div>
+                    <div class="col-md-6 d-flex">
+                        <div class="info bg-white p-4">
+                            <p><span>Bio:</span> {{user.userprofile.description}}</p>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 d-flex">
+                        <div class="info bg-white p-4">
+                            <p><span>Edit Profile:</span> <a href="{% url 'edit_profile' %}"
+                                    style="color: green;">Profile</a> |
+                                <a href="{% url 'change_password' %}" style="color: green;">Password</a></p>
+                        </div>
+                    </div>
+
+
+                </div>
+
+
+
+            </div>
+    </div>
+    </section>
+</div>
+
+</div>
+</div>
+
+
+
 
 </div>
 
