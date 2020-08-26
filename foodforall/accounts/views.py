@@ -101,3 +101,24 @@ def change_password(request):
         return render(request,'change_password.html', args)
 
 
+
+class ProfileForm(TemplateView):
+    template_name = "profileform.html"
+
+    def get(self, request):
+        form = EditProfilePhoto
+        args = {
+                'form':form
+                                     }
+        # args1= {'partners': partners}
+        
+        return render(request, self.template_name,args)
+
+    def post(self, request):
+        form = EditProfilePhoto(request.POST,request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect ('/profile')
+
+        args = {'form':form }
+        return render(request,self.template_name, args)
